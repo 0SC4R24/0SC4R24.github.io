@@ -18,25 +18,31 @@ function calculateTime(){
     var mins = document.getElementById("mins");
     var secs = document.getElementById("secs");
     var timeLeftText = document.getElementById("timeLeft");
-
+	var timer = document.getElementById("timer");
+	
     var daysLeft = parseInt(secondsLeft / (24 * 3600));
-    secondsLeft = secondsLeft % (24 * 3600);
-    var hoursLeft = parseInt(secondsLeft / 3600);
-    secondsLeft %= 3600;
-    var minutesLeft = Math.floor(secondsLeft / 60);
-    secondsLeft %= 60;
+    var segsLeft = secondsLeft % (24 * 3600);
+    var hoursLeft = parseInt(segsLeft / 3600);
+    segsLeft %= 3600;
+    var minutesLeft = Math.floor(segsLeft / 60);
+    segsLeft %= 60;
 
     if (daysLeft < 10) daysLeft = "0" + daysLeft;
     if (hoursLeft < 10) hoursLeft = "0" + hoursLeft;
     if (minutesLeft < 10) minutesLeft = "0" + minutesLeft;
-    if (secondsLeft < 10) secondsLeft = "0" + secondsLeft;
+    if (segsLeft < 10) segsLeft = "0" + segsLeft;
 
     day.innerHTML = daysLeft;
     hour.innerHTML = hoursLeft;
     mins.innerHTML = minutesLeft;
-    secs.innerHTML = secondsLeft;
+    secs.innerHTML = segsLeft;
 
-    timeLeftText.innerHTML = daysLeft + " days, " + hoursLeft + " hours, " + minutesLeft + " minutes, " + secondsLeft + " seconds left!";
+    timeLeftText.innerHTML = daysLeft + " days, " + hoursLeft + " hours, " + minutesLeft + " minutes, " + segsLeft + " seconds left!";
+	
+	if (secondsLeft < 1){
+		timer.innerHTML = "Times Out";
+		timeLeftText.innerHTML = "*RING RING* Times out! *RING RING*";
+	}
 }
 
 setInterval(calculateTime, 1000);
