@@ -19,20 +19,20 @@ const change = (waiting) => {
 }
 
 var options = {
-    "rock" : {
-        "rock" : 0,
-        "paper" : -1,
-        "scissors" : 1
+    "rock": {
+        "rock": 0,
+        "paper": -1,
+        "scissors": 1
     },
-    "paper" : {
-        "rock" : 1,
-        "paper" : 0,
-        "scissors" : -1
+    "paper": {
+        "rock": 1,
+        "paper": 0,
+        "scissors": -1
     },
-    "scissors" : {
-        "rock" : -1,
-        "paper" : 1,
-        "scissors" : 0
+    "scissors": {
+        "rock": -1,
+        "paper": 1,
+        "scissors": 0
     }
 };
 
@@ -44,10 +44,10 @@ var win = 0;
 
 var counter = [
     document.getElementById("counter0"),
-    document.getElementById("counter1"), 
-    document.getElementById("counter2"), 
-    document.getElementById("counter3"), 
-    document.getElementById("counter4"), 
+    document.getElementById("counter1"),
+    document.getElementById("counter2"),
+    document.getElementById("counter3"),
+    document.getElementById("counter4"),
     document.getElementById("counter5")
 ];
 
@@ -74,10 +74,20 @@ const addOrange = () => {
     return "col-sm-4 p-3 fw-bolder fs-3 bg-warning";
 }
 
+const printWin = (win) => {
+    let color = win ? "bg-success" : "bg-danger";
+    document.getElementById("body").className = color;
+
+    setTimeout(() => {
+        document.getElementById("body").className = "bg-dark";
+    }, 500);
+}
+
 const addWin = () => {
     win++;
     let index = win + 2;
     counter[index].className = addBlue();
+    printWin(true);
 
     if (win > 2) {
         setTimeout(() => {
@@ -91,6 +101,7 @@ const subWin = () => {
     win--;
     let index = win + 3;
     counter[index].className = addOrange();
+    printWin(false);
 
     if (win < -2) {
         setTimeout(() => {
@@ -116,7 +127,6 @@ const playOption = (option) => {
     change(true);
 
     // 2 players
-    /*
     if (turn == 1) {
         option1 = option;
         turn = 2;
@@ -134,10 +144,9 @@ const playOption = (option) => {
             subWin();
         }
     }
-    */
 
     // 1 player
-    option1 = option;
+    /*option1 = option;
     option2 = opts[getRandomInt(0, 2)];
 
     var result = play(option1, option2);
@@ -146,7 +155,7 @@ const playOption = (option) => {
         addWin();
     } else if (result == -1) {
         subWin();
-    }
+    }*/
 
     // 0 players
     /*
