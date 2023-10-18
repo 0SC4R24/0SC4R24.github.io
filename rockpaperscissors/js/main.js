@@ -127,6 +127,7 @@ const playOption = (option) => {
     change(true);
 
     // 2 players
+    /*
     if (turn == 1) {
         option1 = option;
         turn = 2;
@@ -144,9 +145,10 @@ const playOption = (option) => {
             subWin();
         }
     }
+    */
 
     // 1 player
-    /*option1 = option;
+    option1 = option;
     option2 = opts[getRandomInt(0, 2)];
 
     var result = play(option1, option2);
@@ -155,7 +157,7 @@ const playOption = (option) => {
         addWin();
     } else if (result == -1) {
         subWin();
-    }*/
+    }
 
     // 0 players
     /*
