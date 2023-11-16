@@ -1,6 +1,7 @@
 {
     "name": "practica-2",
     "version": "0.1.0",
+    "homepage": "https://0sc4r24.github.io/to-do-list",
     "private": true,
     "dependencies": {
         "@testing-library/jest-dom": "^5.17.0",
