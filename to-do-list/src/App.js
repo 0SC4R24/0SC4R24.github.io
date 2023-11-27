@@ -15,8 +15,11 @@ function App() {
   }, []);
 
   useEffect(() => {
-    if (notes.length > 0) {
-      localStorage.setItem('notes', JSON.stringify(notes));
+    if (notes.length >= 0) {
+      setNotes((prevNotes) => {
+        localStorage.setItem('notes', JSON.stringify(prevNotes));
+        return prevNotes;
+      });
     }
   }, [notes]);
 
