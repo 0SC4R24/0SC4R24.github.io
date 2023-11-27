@@ -10,7 +10,7 @@ function App() {
   const [newNoteTitle, setNewNoteTitle] = useState('');
 
   useEffect(() => {
-    const storedNotes = JSON.parse(localStorage.getItem('notes'));
+    const storedNotes = JSON.parse(localStorage.getItem('notes')) || [];
     setNotes(storedNotes);
   }, []);
 
