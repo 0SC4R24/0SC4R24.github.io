@@ -10,13 +10,16 @@ function App() {
   const [newNoteTitle, setNewNoteTitle] = useState('');
 
   useEffect(() => {
-    const storedNotes = JSON.parse(localStorage.getItem('notes'));
+    const storedNotes = JSON.parse(localStorage.getItem('notes')) || [];
     setNotes(storedNotes);
   }, []);
 
   useEffect(() => {
-    if (notes.length > 0) {
-      localStorage.setItem('notes', JSON.stringify(notes));
+    if (notes.length >= 0) {
+      setNotes((prevNotes) => {
+        localStorage.setItem('notes', JSON.stringify(prevNotes));
+        return prevNotes;
+      });
     }
   }, [notes]);
 
